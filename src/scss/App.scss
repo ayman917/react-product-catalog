@@ -1,0 +1,212 @@
+@import url('../scss/fonts.scss');
+@import 'mixin.scss';
+
+.container {
+    @include respond(md) {
+        flex-flow: column;
+    }
+    display: flex;
+    justify-content: space-between;
+}
+.column {
+    flex: 1;
+    padding: 0;
+    margin: 0 10px;
+}
+footer {
+    @include section-space;
+    @include respond(lg) {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    padding: 15px 0;
+    border-top: 1px solid #CBCBCB;
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparant;
+        @include respond(md) {
+            justify-content: center;
+            img {
+                display: none;
+            }
+            .nav-menu {
+                column-gap: 15px;
+            }
+        }
+        @include respond(sm) {
+            .contact-button {
+                display: none;
+            }
+        }
+    }
+    p {
+        @include respond(md) {
+            text-align: center;
+        }
+        margin-top: 32px;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 18px;
+        color: #515151;        
+    }
+}
+.header {
+    margin-top: 50px;
+    @include respond(lg) {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    @include respond(md) {
+        margin-top: 0;
+    }
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 32px;
+    margin: 0;
+    padding: 0;
+    .nav-link {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        a {
+            color: #515151;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 19.36px;
+            font-weight: 400;
+            &:hover,
+            &:focus {
+              color: #46B0E6;
+            }
+        }
+        .contact-button {
+            @include respond(md) {
+                padding: 12px 24px;
+            }
+            padding: 16px 32px;
+            border: 1px;
+            border-radius: 40px;
+            background-color: #46B0E6;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 19.36px;
+            box-shadow: 0 10px 40px rgba(70, 176, 230, 0.7);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+    }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .menu-icon {
+    display: none;
+  }
+}
+#hamburger {
+  position: relative;
+  margin: auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: black;
+    border-radius: 9px;
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+}
+#hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+#hamburger span:nth-child(2) {
+  top: 11px;
+}
+
+#hamburger span:nth-child(3) {
+  top: 22px;
+} 
+#hamburger.open span:nth-child(1) {
+  top: 11px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+#hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: 0;
+}
+#hamburger.open span:nth-child(3) {
+  top: 11px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+} 
+@include respond(md) {
+  .navbar {
+    width: 100%;
+    background-color: #EBF0FF;
+    height: 44px;
+    padding: 10px 0;
+    img {
+      padding: 0 10px;
+    }
+  }
+  .navbar .menu-icon {
+    padding: 0 10px;
+    width: 30px;
+    height: 25px;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .navbar .sitenavigation {
+    .nav-menu {
+      display: none;
+    }
+  }
+  .navbar .sitenavigation.is-tapped {
+    .nav-menu {
+      display: flex;
+      flex-flow: column;
+      row-gap: 12px;
+      position: absolute;
+      margin: 10px 0;
+      background-color: #F6FBF8;
+      box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.08);
+      right: 5%;
+      z-index: 100;
+      padding: 24px;
+      .nav-link {
+        padding-bottom: 5px;
+      }
+    }
+  }    
+}

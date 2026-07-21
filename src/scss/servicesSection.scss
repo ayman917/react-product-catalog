@@ -1,0 +1,40 @@
+@import 'mixin';
+.services-section {
+  @include section-space;
+  @include respond(lg) {
+    flex-flow: column;
+    padding: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: #F6FBF8;
+  box-shadow: 0 34 44 -20 rgba(185, 206, 234, 0.25);
+  transition: box-shadow 0.3s;
+  .services-item {
+    @include respond(xs) {
+      padding: 18px;
+    }
+    padding: 24px;
+    display: flex;
+    column-gap: 24px;
+    .services-content {
+      display: flex;
+      flex-flow: column;
+      row-gap: 10px;
+      span {
+        @include paragraph;
+      }
+      &>:first-child {
+        font-weight: 600;
+        color: #F89D21;
+        ;
+      }
+    }
+  }
+}

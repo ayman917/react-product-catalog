@@ -1,0 +1,25 @@
+.product-list {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #F6FBF8;
+  border-radius: 10px;
+  text-align: center;
+  padding: 24px;
+  box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s;
+}
+
+.product-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  margin-bottom: 10px;
+}

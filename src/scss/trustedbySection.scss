@@ -1,0 +1,65 @@
+@import 'mixin';
+.trusted-section {
+    @include section-space;
+    .trust-by {
+        @include respond(md) {
+            margin: auto;
+        }
+        @include respond(xs) {
+            margin: 0 10px;
+        }
+        max-width: 441px;
+        margin: auto;
+        text-align: center;
+        .trustby-heading {
+            @include heading3;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            padding-bottom: 16px;
+            svg {
+                @include respond(sm) {
+                    width: 135px;
+                }
+            }
+        }
+        p {
+            @include paragraph;
+        }
+    }
+    .slider {
+        padding-top: 24px;
+        max-width: 1000px;
+        margin: auto;
+        .slick-slider {
+            @include respond(lg) {
+                padding: 0;
+            }
+            padding: 0 56px;
+            .slider-img {
+                text-align: -webkit-center;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: scale-down;
+                }
+            }
+            .slick-prev {
+                background-image: url('../assets/chevronLeft.png');
+                &::before {
+                    content: '';
+                }
+            }
+            .slick-next {
+                background-image: url('../assets/chevronRight.png');
+                &::before {
+                    content: '';
+                }
+            }
+            
+        }
+    }
+}
