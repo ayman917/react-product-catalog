@@ -8,7 +8,7 @@ const Cart = () => {
 
   return (
     <div className='cart'>
-      <h2>Cart</h2>
+      <h1>Cart</h1>
       <div className="product-list">
         {cartItems.length === 0 ? (
           <p>No items in cart</p>

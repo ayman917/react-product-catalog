@@ -1,39 +1,79 @@
 import React, { useContext, useRef } from "react";
-import { CartContext } from "./CartContext";
+import { TextField, Button } from "@mui/material";
 
-const ProductForm = () => {
-  const { addProduct } = useContext(CartContext);
-  const titleRef = useRef();
-  const descriptionRef = useRef();
-  const priceRef = useRef();
+const ProductForm = ({ onProductAdded }) => {
+  const [formData, setFormData] = React.useState({
+    title: "",
+    category: "",
+    price: "",
+  });
+  const [message, setMessage] = React.useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newProduct = {
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      price: parseFloat(priceRef.current.value),
-    };
-
-    addProduct(newProduct);
-
-    // Clear the form fields
-    titleRef.current.value = "";
-    descriptionRef.current.value = "";
-    priceRef.current.value = "";
+    addProduct(formData);
+  }
+  
+  const addProduct = async (product) => {
+    setMessage(""); // Clear previous messages
+    try {
+      const response = await fetch("https://dummyjson.com/products/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Product added:", data);
+      setMessage("Product added successfully!");
+      onProductAdded(data);
+      setFormData({ title: "", category: "", price: "" });
+    } catch (error) {
+      console.error("Error adding product:", error);
+      setMessage("Failed to add product. Please try again.");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
       <h2>Add New Product</h2>
-      <input type="text" placeholder="Title" ref={titleRef} required />
+      <TextField
+        label="Title"
+        variant="outlined"
+        value={formData.title}
+        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        required
+      />
       <br />
-      <textarea placeholder="Description" ref={descriptionRef} required />
+      <TextField
+        style={{ marginTop: "10px" }}
+        label="Category"
+        variant="outlined"
+        value={formData.category}
+        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+        required
+      />
       <br />
-      <input type="number" placeholder="Price" ref={priceRef} required />
+      <TextField
+        style={{ marginTop: "10px" }}
+        label="Price"
+        variant="outlined"
+        type="number"
+        value={formData.price}
+        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+        required
+      />
       <br />
-      <button type="submit">Add Product</button>
+      <Button type="submit" style={{ marginTop: "10px" }}>
+        Add Product
+      </Button>
+      {message && <p>{message}</p>}
     </form>
+
   );
 };
 export default ProductForm;

@@ -1,26 +1,13 @@
-import { Box, Button, } from '@mui/material';
-import { styled } from "@mui/material/styles";
-
-
-const DeleteButton = styled(Button)({
-  color: "red",
-});
+import { Box, Button } from '@mui/material';
 const ProductCard = ({ product, onAction, actionLabel, showDelete, deleteProduct }) => {
 
   return (
     <Box className="product-card">
-      <h3>{product.title}</h3>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      <Button onClick={() => onAction(product)}>{actionLabel}</Button>
-      {/* Only show if showDelete = true */}
-      {showDelete && (
-        <DeleteButton className='delete-prod-btn'
-          onClick={() => deleteProduct(product.id)}
-        >
-          Delete Product
-        </DeleteButton>
-      )}
+      <h4>{product.title}</h4>
+      <p><strong>Brand:</strong> {product.brand}</p>
+      <p><strong>Category:</strong> {product.category}</p>
+      <p><strong>Price:</strong> ${product.price}</p>
+      <Button className="" onClick={() => onAction(product)}>{actionLabel}</Button>
     </Box>
   );
 };

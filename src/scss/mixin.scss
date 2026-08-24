@@ -44,7 +44,23 @@
     color: black;
     margin: 0;
 }
+@mixin heading4 {
+    @include respond(sm) {
+        font-weight: 600;
+        line-height: 19.36px;
+    }
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 25px;
+    color: black;
+    margin: 0;
+}
 @mixin paragraph {
+    @include respond(sm) {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 19.36px;
+    }
     margin: 0;
     font-size: 16px;
     font-weight: 500;
