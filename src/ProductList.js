@@ -5,7 +5,7 @@ import './scss/productList.scss';
 import { CartContext } from "./CartContext";
 import { TextField, Stack } from "@mui/material";
 
-const ProductList = ({ products, loading, error }) => {
+const ProductList = ({ products, loading, error, onProductUpdated }) => {
   const { addToCart } = useContext(CartContext);
   const [message, setMessage] = useState("");
 
@@ -72,6 +72,7 @@ const ProductList = ({ products, loading, error }) => {
                 onAction={handleAddToCart}
                 actionLabel="Add to Cart"
                 showEditButton={true}
+                onProductUpdated={onProductUpdated}
               />
             ))
           )}

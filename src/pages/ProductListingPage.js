@@ -36,6 +36,13 @@ useEffect(() => {
   const onProductAdded = (newProduct) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   }
+  const onProductUpdated = (updatedProduct) => {
+    setProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.id === updatedProduct.id ? updatedProduct : product
+      )
+    );
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -51,7 +58,7 @@ useEffect(() => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <ProductList products={products} loading={loading} error={error} />
+            <ProductList  products={products} loading={loading} error={error} onProductUpdated={onProductUpdated} />
           </TabPanel>
           <TabPanel value="2">
             <AddProduct onProductAdded={onProductAdded} />
