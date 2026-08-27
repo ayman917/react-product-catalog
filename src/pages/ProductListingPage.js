@@ -6,7 +6,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import ProductList from '../ProductList';
-import ProductForm from '../ProductForm';
+import AddProduct from '../AddProduct';
 function ProductListingPage() {
   const [value, setValue] = React.useState('1');
   const [products, setProducts] = React.useState([]);
@@ -54,7 +54,7 @@ useEffect(() => {
             <ProductList products={products} loading={loading} error={error} />
           </TabPanel>
           <TabPanel value="2">
-            <ProductForm onProductAdded={onProductAdded} />
+            <AddProduct onProductAdded={onProductAdded} />
           </TabPanel>
         </TabContext>
       </Box>

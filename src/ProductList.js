@@ -32,8 +32,7 @@ const ProductList = ({ products, loading, error }) => {
     } else {
       setMessage(result.success);
     }
-  };
-  
+  };  
 
   return (
       <div>
@@ -72,8 +71,10 @@ const ProductList = ({ products, loading, error }) => {
                 product={product}
                 onAction={handleAddToCart}
                 actionLabel="Add to Cart"
-            />)
-          ))}
+                showEditButton={true}
+              />
+            ))
+          )}
         </div>
         {message && (
           <p style={{ color: message.includes("success") ? "green" : "red" }}>

@@ -19,7 +19,7 @@ const Cart = () => {
                 product={product}
                 onAction={() => removeFromCart(product.id)}
                 actionLabel="Remove from Cart"
-                showDelete={false}
+                showEditButton={false}
             />
           ))
         )}

@@ -45,14 +45,33 @@
 }
 
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: #F6FBF8;
   border-radius: 10px;
   text-align: center;
-  padding: 24px;
+  padding: 40px;
   box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s;
+}
+
+.edit-product {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  &:hover {
+    background-color: #46B0E6;
+    color: #fff;
+    border: none;
+  }
 }
 
 .product-card h4 {
