@@ -1,39 +1,40 @@
-import React, { useContext, useRef } from "react";
-import { CartContext } from "./CartContext";
-
-const ProductForm = () => {
-  const { addProduct } = useContext(CartContext);
-  const titleRef = useRef();
-  const descriptionRef = useRef();
-  const priceRef = useRef();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newProduct = {
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      price: parseFloat(priceRef.current.value),
-    };
-
-    addProduct(newProduct);
-
-    // Clear the form fields
-    titleRef.current.value = "";
-    descriptionRef.current.value = "";
-    priceRef.current.value = "";
-  };
-
+import { TextField, Button } from '@mui/material';
+const ProductForm = ({ isModal, formData, setFormData, handleSubmit }) => {
+  
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
-      <h2>Add New Product</h2>
-      <input type="text" placeholder="Title" ref={titleRef} required />
+      <h2>{isModal ? "Edit Product" : "Add New Product"}</h2>
+      <TextField
+        label="Title"
+        variant="outlined"
+        value={formData.title}
+        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+        required
+      />
       <br />
-      <textarea placeholder="Description" ref={descriptionRef} required />
+      <TextField
+        style={{ marginTop: "10px" }}
+        label="Category"
+        variant="outlined"
+        value={formData.category}
+        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+        required
+      />
       <br />
-      <input type="number" placeholder="Price" ref={priceRef} required />
+      <TextField
+        style={{ marginTop: "10px" }}
+        label="Price"
+        variant="outlined"
+        type="number"
+        value={formData.price}
+        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+        required
+      />
       <br />
-      <button type="submit">Add Product</button>
+      <Button type="submit" style={{ marginTop: "10px" }}>
+        {isModal ? "Update Product" : "Add Product"}
+      </Button>
     </form>
-  );
-};
+  )
+}
 export default ProductForm;
