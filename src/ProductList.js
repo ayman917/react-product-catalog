@@ -11,7 +11,8 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
 
   let displayProducts = products;
   const sortby = [
-  { id: 1, name: "Price", value: "price" },
+  { id: 1, name: "Low to High", value: "low-to-high" },
+  { id: 2, name: "High to Low", value: "high-to-low" }
   ];
   const [sortBy, setSortBy] = useState("");
   const [search, setSearch] = useState("");
@@ -21,8 +22,11 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
       product.title.toLowerCase().includes(search.toLowerCase())
     );
   }
-  if (sortBy === "price") {
+  if (sortBy === "low-to-high") {
     displayProducts = [...displayProducts].sort((a, b) => a.price - b.price);
+  }
+  if (sortBy === "high-to-low") {
+    displayProducts = [...displayProducts].sort((a, b) => b.price - a.price);
   }
 
   const handleAddToCart = (product) => {
@@ -50,7 +54,7 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
           > </TextField>
           <div className="select-wrapper">
             <select className="sort-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-              <option value="">Sort by</option>
+              <option value="">Sort by Price</option>
               {sortby.map((sort) => (
                 <option key={sort.id} value={sort.value}>
                   {sort.name}
