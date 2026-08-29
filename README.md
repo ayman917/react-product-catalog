@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# React Product Catalog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive e-commerce/product showcase application built with React.js.
+The project includes a home page, product catalog, product management, cart functionality, REST API
+integration, reusable components, React state management, and responsive UI development.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+* Home Page
+* Product Listing Page
+* Browse products
+* Add new products using a form
+* Update products
+* Search products
+* Sort products by price
+* Add products to cart
+* Increase and decrease product quantity
+* Remove products from cart
+* Calculate cart total
+* Global cart state using Context API
+* REST API integration
+* Loading and error states
+* Reusable React components
+* Client-side routing with React Router
+* Responsive design
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* React.js
+* JavaScript (ES6+)
+* React Hooks
+* React Router
+* React Context API
+* Material UI
+* SCSS
+* REST API
+* React Icons
+* React Slick
+* React LazyLoad
+* Styled Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## API
 
-### `npm test`
+Product data is fetched from the DummyJSON API.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Products: `https://dummyjson.com/products`
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Clone the repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/ayman917/react-product-catalog.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Navigate to the project
 
-### `npm run eject`
+```bash
+cd react-product-catalog
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Start the development server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+The application will run at:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Build for Production
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## What I Practiced
 
-### Analyzing the Bundle Size
+Through this project, I practiced:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Building reusable React components
+* Managing application state with React Context
+* Fetching and managing product data using REST APIs
+* Adding new products using POST requests
+* Updating products using PUT/PATCH requests
+* Handling loading and error states
+* Implementing search and sorting
+* Managing cart state and product quantities
+* Creating forms and handling user input
+* Implementing client-side routing with React Router
+* Working with React Router
+* Building responsive layouts with SCSS and Material UI
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Aimen**
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GitHub: [ayman917](https://github.com/ayman917)
