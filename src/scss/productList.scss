@@ -74,6 +74,20 @@
   }
 }
 
+.quantity-btn {
+  border: 1px solid #515151;
+  font-size: 16px;
+  margin: 0 5px;
+  padding: 0 10px;
+  font-weight: 400;
+  color: #515151;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .product-card h4 {
   @include heading4;
   margin-bottom: 10px;
@@ -86,4 +100,16 @@
 
 .product-card button {
   margin-top: auto;
+}
+
+.item-style {
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.cart-total {
+  font-size: 20px;
+  strong {
+    margin-right: 10px;
+  }
 }

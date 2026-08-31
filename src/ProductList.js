@@ -29,15 +29,6 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
     displayProducts = [...displayProducts].sort((a, b) => b.price - a.price);
   }
 
-  const handleAddToCart = (product) => {
-    const result = addToCart(product);
-    if (result.error) {
-      setMessage(result.error);
-    } else {
-      setMessage(result.success);
-    }
-  };  
-
   return (
       <div>
         <h1>Product List</h1>
@@ -73,19 +64,20 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAction={handleAddToCart}
+                onAction={() => addToCart(product)}
                 actionLabel="Add to Cart"
                 showEditButton={true}
+                showQuantity={false}
                 onProductUpdated={onProductUpdated}
               />
             ))
           )}
         </div>
-        {message && (
+        {/* {message && (
           <p style={{ color: message.includes("success") ? "green" : "red" }}>
             {message}
           </p>
-        )}
+        )} */}
       </div>
   );
 };
