@@ -12,7 +12,8 @@ const Cart = () => {
     <div className='cart'>
       <Stack
         direction={"row"}
-        sx={{justifyContent: "space-between",alignItems: "center"}}
+        sx={{justifyContent: "space-between",alignItems: "center", padding: { xs: "0 20px", md: "0",}
+      }}
       >
         <h1>Cart</h1>
         <p className='cart-total'><strong>Total:</strong>${total.toFixed(2)}</p>

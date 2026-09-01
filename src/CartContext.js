@@ -55,13 +55,18 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   // Remove a product from the cart
   const removeFromCart = (productId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
   };
 
   return (
-    <CartContext.Provider value={{cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, getCartTotal }}>
+    <CartContext.Provider value={{cartItems, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, getCartTotal, cartCount }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,16 +1,25 @@
 @import 'mixin';
 .product-list {
   @include respond(sm) {
-    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
   }
-  margin-top: 50px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
+.product-list-heading {
+  @include respond(md) {
+    margin-top: 0;
+  }
+}
+
 .select-wrapper {
+  @include respond(sm) {
+    align-self: flex-end;
+  }
   position: relative;
   display: inline-block;
 }

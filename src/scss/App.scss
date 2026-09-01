@@ -1,6 +1,13 @@
 @import url('../scss/fonts.scss');
 @import 'mixin.scss';
 
+main {
+  margin-top: 20px;
+  @include respond(md) {
+    margin: 0 10px;
+  }
+}
+
 .container {
     @include respond(md) {
         flex-flow: column;
@@ -53,13 +60,16 @@ footer {
     }
 }
 .header {
-    margin-top: 50px;
-    @include respond(lg) {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #EBF0FF;
+    margin: 0 -40px;
+    padding: 20px 40px;
+    border-bottom: 1px solid #CBCBCB;
     @include respond(md) {
-        margin-top: 0;
+        margin: 0;
+        padding: 10px;
     }
 }
 
@@ -111,67 +121,7 @@ footer {
   .menu-icon {
     display: none;
   }
-}
-#hamburger {
-  position: relative;
-  margin: auto;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  span {
-    display: block;
-    position: absolute;
-    height: 5px;
-    width: 100%;
-    background: black;
-    border-radius: 9px;
-    opacity: 1;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
-  }
-}
-#hamburger span:nth-child(1) {
-  top: 0px;
-}
-
-#hamburger span:nth-child(2) {
-  top: 11px;
-}
-
-#hamburger span:nth-child(3) {
-  top: 22px;
-} 
-#hamburger.open span:nth-child(1) {
-  top: 11px;
-  -webkit-transform: rotate(135deg);
-  -moz-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
-#hamburger.open span:nth-child(2) {
-  opacity: 0;
-  left: 0;
-}
-#hamburger.open span:nth-child(3) {
-  top: 11px;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-} 
-@include respond(md) {
-  .navbar {
+  @include respond(md) {
     width: 100%;
     background-color: #EBF0FF;
     height: 44px;
@@ -180,33 +130,66 @@ footer {
       padding: 0 10px;
     }
   }
-  .navbar .menu-icon {
-    padding: 0 10px;
-    width: 30px;
-    height: 25px;
-    display: block;
-    -webkit-tap-highlight-color: transparent;
+
+}
+
+@include respond(md) {
+  .menu-icon.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
   }
-  .navbar .sitenavigation {
-    .nav-menu {
-      display: none;
-    }
+  .menu-icon.open span:nth-child(2) {
+      opacity: 0;
   }
-  .navbar .sitenavigation.is-tapped {
-    .nav-menu {
-      display: flex;
-      flex-flow: column;
-      row-gap: 12px;
-      position: absolute;
-      margin: 10px 0;
-      background-color: #F6FBF8;
-      box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.08);
-      right: 5%;
-      z-index: 100;
-      padding: 24px;
-      .nav-link {
-        padding-bottom: 5px;
-      }
+  .menu-icon.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Hamburger hidden on desktop */
+.menu-icon {
+    display: none;
+}
+
+
+/* Mobile */
+@include respond(md) {
+    .navbar .menu-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 5px;
     }
-  }    
+    .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: black;
+        transition: 0.3s;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        right: 20%;
+        top: 40px;
+        z-index: 100;
+        background-color: #fff;
+        padding: 20px 20px;
+        width: 200px;
+    }
+    .sitenavigation.is-tapped {
+      position: relative;
+    }
+    .sitenavigation.is-tapped .nav-menu {
+        display: flex;
+    }
 }

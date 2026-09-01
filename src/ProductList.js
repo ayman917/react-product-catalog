@@ -31,12 +31,18 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
 
   return (
       <div>
-        <h1>Product List</h1>
+        <h1 className="product-list-heading">Product List</h1>
         <Stack 
-        direction={"row"}
-        sx={{justifyContent: "space-between",alignItems: "center"}}
+        direction={{ sm: "column", md: "row" }}
+        sx={{rowGap: "20px", justifyContent: "space-between",alignItems: "center"}}
         >
           <TextField
+            sx={{
+              width: {
+                xs: "100%",
+                md: "300px",
+              },
+            }}
             label="Search"
             variant="outlined"
             type="text"

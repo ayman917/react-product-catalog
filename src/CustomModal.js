@@ -34,12 +34,16 @@ const CustomModal = ({ productId, product, open, onClose, onProductUpdated }) =>
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
     bgcolor: "#F6FBF8",
     border: "none",
     boxShadow: 24,
     outline: "none",
     p: 4,
+    width: {
+      xs: "70%",
+      sm: "70%",
+      md: "400px",
+    },
   };
   return (
     <>
