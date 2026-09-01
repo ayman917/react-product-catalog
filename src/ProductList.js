@@ -29,23 +29,20 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
     displayProducts = [...displayProducts].sort((a, b) => b.price - a.price);
   }
 
-  const handleAddToCart = (product) => {
-    const result = addToCart(product);
-    if (result.error) {
-      setMessage(result.error);
-    } else {
-      setMessage(result.success);
-    }
-  };  
-
   return (
       <div>
-        <h1>Product List</h1>
+        <h1 className="product-list-heading">Product List</h1>
         <Stack 
-        direction={"row"}
-        sx={{justifyContent: "space-between",alignItems: "center"}}
+        direction={{ sm: "column", md: "row" }}
+        sx={{rowGap: "20px", justifyContent: "space-between",alignItems: "center"}}
         >
           <TextField
+            sx={{
+              width: {
+                xs: "100%",
+                md: "300px",
+              },
+            }}
             label="Search"
             variant="outlined"
             type="text"
@@ -73,19 +70,20 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAction={handleAddToCart}
+                onAction={() => addToCart(product)}
                 actionLabel="Add to Cart"
                 showEditButton={true}
+                showQuantity={false}
                 onProductUpdated={onProductUpdated}
               />
             ))
           )}
         </div>
-        {message && (
+        {/* {message && (
           <p style={{ color: message.includes("success") ? "green" : "red" }}>
             {message}
           </p>
-        )}
+        )} */}
       </div>
   );
 };

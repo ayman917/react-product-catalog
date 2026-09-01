@@ -51,7 +51,7 @@ useEffect(() => {
     <Box className="product-list-page">
       <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Box>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Products" value="1" />
               <Tab label="Add New Product" value="2" />

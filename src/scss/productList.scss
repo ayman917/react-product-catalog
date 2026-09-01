@@ -1,16 +1,25 @@
 @import 'mixin';
 .product-list {
   @include respond(sm) {
-    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
   }
-  margin-top: 50px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
+.product-list-heading {
+  @include respond(md) {
+    margin-top: 0;
+  }
+}
+
 .select-wrapper {
+  @include respond(sm) {
+    align-self: flex-end;
+  }
   position: relative;
   display: inline-block;
 }
@@ -74,6 +83,20 @@
   }
 }
 
+.quantity-btn {
+  border: 1px solid #515151;
+  font-size: 16px;
+  margin: 0 5px;
+  padding: 0 10px;
+  font-weight: 400;
+  color: #515151;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .product-card h4 {
   @include heading4;
   margin-bottom: 10px;
@@ -86,4 +109,16 @@
 
 .product-card button {
   margin-top: auto;
+}
+
+.item-style {
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.cart-total {
+  font-size: 20px;
+  strong {
+    margin-right: 10px;
+  }
 }
