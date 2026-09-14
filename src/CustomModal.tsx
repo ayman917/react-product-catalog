@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import ProductForm from './ProductForm';
 import { Modal, Box } from '@mui/material';
-const CustomModal = ({ productId, product, open, onClose, onProductUpdated }) => {
-  const [formData, setFormData] = useState(product);
+const CustomModal = ({ productId, product, open, onClose, onProductUpdated }: UpdateFormProps) => {
+  const [formData, setFormData] = useState<FormDataProps>({
+    title: product.title,
+    category: product.category,
+    price: String(product.price),
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     updateProduct(productId, formData);
     console.log("productId:", productId);
     console.log("formData:", formData);
   };
-  const updateProduct = async (productId, updatedProduct) => {
+  const updateProduct = async (productId: number, updatedProduct: FormDataProps) => {
     try {
       const response = await fetch(`https://dummyjson.com/products/${productId}`, {
         method: "PATCH",
@@ -23,7 +27,7 @@ const CustomModal = ({ productId, product, open, onClose, onProductUpdated }) =>
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      onProductUpdated(data);
+      onProductUpdated?.(data);
       console.log("Product updated:", data);
     } catch (error) {
       console.error("Error updating product:", error);
@@ -46,7 +50,7 @@ const CustomModal = ({ productId, product, open, onClose, onProductUpdated }) =>
     },
   };
   return (
-    <>
+    <> 
       <Modal
         open={open}
         onClose={onClose}

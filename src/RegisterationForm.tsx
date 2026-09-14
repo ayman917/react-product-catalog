@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const RegisterationForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<registrationFormData>({
     name: '',
     companyName: '',
     email: '',
   });
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<Partial<registrationFormData>>({
     name: '',
     companyName: '',
     email: '',
@@ -18,11 +18,11 @@ const RegisterationForm = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    const storedFormData = JSON.parse(localStorage.getItem('formData'));
-    if (storedFormData) {
-      setFormData(storedFormData);
+    const storedDataValues = localStorage.getItem('formData');
+    if (storedDataValues) {
+      setFormData(JSON.parse(storedDataValues));
     }
-
+ 
     const isFormSubmitted = localStorage.getItem('formSubmitted') === 'true';
     setFormSubmitted(isFormSubmitted);
 
@@ -39,14 +39,14 @@ const RegisterationForm = () => {
     };
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isFormSubmitted(formData)) {
       setSuccessMessage('');
@@ -83,18 +83,21 @@ const RegisterationForm = () => {
     return valid;
   };
 
-  const isValidEmail = (email) => {
+  const isValidEmail = (email: string) => {
     return /^\S+@\S+\.\S+$/.test(email);
   };
 
-  const isFormSubmitted = (formData) => {
-    const storedFormData = JSON.parse(localStorage.getItem('formData'));
-    return (
-      storedFormData &&
-      storedFormData.name === formData.name &&
-      storedFormData.companyName === formData.companyName &&
-      storedFormData.email === formData.email
-    );
+  const isFormSubmitted = (formData: registrationFormData) => {
+    const storedDataValues = localStorage.getItem('formData');
+    if (storedDataValues) {
+      const storedData = JSON.parse(storedDataValues);
+      return (
+        storedData &&
+        storedData.name === formData.name &&
+        storedData.companyName === formData.companyName &&
+      storedData.email === formData.email
+      );
+    }
   };
 
   return (
@@ -145,5 +148,6 @@ const RegisterationForm = () => {
     </div>
   );
 };
+
 
 export default RegisterationForm;

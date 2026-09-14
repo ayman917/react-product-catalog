@@ -6,7 +6,11 @@ import { CartContext } from "./CartContext"
 
 
 const Header = ()=> {
-    const { cartCount } = useContext(CartContext);
+    const cartContext = useContext(CartContext);
+    if (!cartContext) {
+        throw new Error("CartContext must be used within CartProvider");
+    }
+    const { cartCount } = cartContext;
 
    const [menuOpen, setMenuOpen] = useState(false);
 

@@ -5,9 +5,12 @@ import './scss/productList.scss';
 import { CartContext } from "./CartContext";
 import { TextField, Stack } from "@mui/material";
 
-const ProductList = ({ products, loading, error, onProductUpdated }) => {
-  const { addToCart } = useContext(CartContext);
-  const [message, setMessage] = useState("");
+const ProductList = ({ products, loading, error, onProductUpdated }: ProductListProps) => {
+  const cartContext = useContext(CartContext);
+  if (!cartContext) {
+     throw new Error("CartContext must be used within CartProvider");
+  }
+  const { addToCart } = cartContext; 
 
   let displayProducts = products;
   const sortby = [
@@ -79,11 +82,6 @@ const ProductList = ({ products, loading, error, onProductUpdated }) => {
             ))
           )}
         </div>
-        {/* {message && (
-          <p style={{ color: message.includes("success") ? "green" : "red" }}>
-            {message}
-          </p>
-        )} */}
       </div>
   );
 };

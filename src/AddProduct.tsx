@@ -1,19 +1,19 @@
 import { useState } from "react";
 import ProductForm from "./ProductForm";
 
-const AddProduct = ({ onProductAdded }) => {
-  const [formData, setFormData] = useState({
+const AddProduct = ({ onProductAdded }: AddProductProps) => {
+  const [formData, setFormData] = useState<FormDataProps>({
     title: "",
     category: "",
     price: "",
   });
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addProduct(formData);
   }
-  const addProduct = async (product) => {
+  const addProduct = async (product: FormDataProps) => {
     setMessage("");
     try {
       const response = await fetch("https://dummyjson.com/products/add", {

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect } from "react";
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -8,24 +7,26 @@ import TabPanel from '@mui/lab/TabPanel';
 import ProductList from '../ProductList';
 import AddProduct from '../AddProduct';
 function ProductListingPage() {
-  const [value, setValue] = React.useState('1');
-  const [products, setProducts] = React.useState([]);
+  const [value, setValue] = useState('1');
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
 useEffect(() => {
   async function fetchProducts() {
     setLoading(true);
-    setError("");
+    setError(null);
     try {
       const response = await fetch("https://dummyjson.com/products");
       if(!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
+      const data: ApiResponse<Product> = await response.json();
       setProducts(data.products);
     } catch (error) {
-      setError(error.message);
+      if(error instanceof Error) {
+        setError(error.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -33,10 +34,10 @@ useEffect(() => {
   fetchProducts();
 }, []);
 
-  const onProductAdded = (newProduct) => {
+  const onProductAdded = (newProduct: Product) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   }
-  const onProductUpdated = (updatedProduct) => {
+  const onProductUpdated = (updatedProduct: Product) => {
     setProducts((prevProducts) =>
       prevProducts.map((product) =>
         product.id === updatedProduct.id ? updatedProduct : product
@@ -44,7 +45,7 @@ useEffect(() => {
     );
   }
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, newValue: string) => {
     setValue(newValue);
   };
   return (
