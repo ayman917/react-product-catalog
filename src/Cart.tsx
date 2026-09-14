@@ -5,7 +5,11 @@ import { Stack } from '@mui/material';
 import './scss/productList.scss';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, getCartTotal } = useContext(CartContext);
+  const cartContext = useContext(CartContext);
+  if (!cartContext) {
+    throw new Error("CartContext must be used within CartProvider");
+  }
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, getCartTotal } = cartContext;
   const total = getCartTotal();
 
   return (

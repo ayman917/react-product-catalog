@@ -1,5 +1,5 @@
 import { TextField, Button } from '@mui/material';
-const ProductForm = ({ isModal, formData, setFormData, handleSubmit }) => {
+const ProductForm = ({ isModal, formData, setFormData, handleSubmit }: ProductFormProps) => {
   
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>

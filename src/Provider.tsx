@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './Theme';
 
-const Provider = ({ children }) => {
+const Provider = ({ children }: providerProps) => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
