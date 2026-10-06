@@ -1,6 +1,6 @@
 # React Product Catalog
 
-A responsive e-commerce/product showcase application built with React.js.
+A responsive e-commerce/product showcase application built with React.js and TypeScript.
 The project includes a home page, product catalog, product management, cart functionality, REST API
 integration, reusable components, React state management, and responsive UI development.
 
